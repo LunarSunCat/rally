@@ -1,0 +1,309 @@
+.coaches-container {
+    max-width: 1400px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.coaches-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.coaches-header h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.coaches-header p {
+    color: #555;
+    line-height: 1.75;
+    font-size: 1rem;
+    max-width: 920px;
+    margin: 0.75rem auto;
+}
+
+.inline-link {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.inline-link:hover {
+    color: #1a5f7a;
+    text-decoration: underline;
+}
+
+.search-filter {
+    display: grid;
+    grid-template-columns: 1fr 260px 220px;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.search-filter input,
+.search-filter select {
+    padding: 0.85rem 1rem;
+    border: 2px solid #2980b9;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+}
+
+.search-filter input:focus,
+.search-filter select:focus {
+    outline: none;
+    border-color: #1a5f7a;
+    box-shadow: 0 0 8px rgba(41, 128, 185, 0.2);
+}
+
+.reset-btn {
+    padding: 0.95rem 1.5rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.reset-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.coaches-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.coaches-table thead {
+    background: linear-gradient(135deg, #1a5f7a 0%, #2980b9 100%);
+    color: white;
+}
+
+.coaches-table th {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.coaches-table th:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.coaches-table th.sortable::after {
+    content: " ⇅";
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.coaches-table tbody tr {
+    border-bottom: 1px solid #e8ecf3;
+}
+
+.coaches-table tbody tr:hover {
+    background-color: #f5f9ff;
+}
+
+.coaches-table td {
+    padding: 1rem 1.2rem;
+    color: #444;
+    vertical-align: middle;
+}
+
+.coach-name {
+    font-weight: 700;
+    color: #1a5f7a;
+}
+
+.coach-meta {
+    display: block;
+    margin-top: 0.3rem;
+    color: #6b7c93;
+    font-size: 0.95rem;
+}
+
+.coach-badge,
+.utr-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.coach-badge {
+    background: #f4f9ff;
+    color: #1a5f7a;
+    border: 1px solid #d4e9fb;
+}
+
+.utr-badge {
+    background: #2980b9;
+    color: white;
+}
+
+.coaches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.8rem;
+    margin-top: 1.5rem;
+}
+
+.coach-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-top: 4px solid #2980b9;
+}
+
+.coach-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.coach-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+}
+
+.coach-card-body {
+    padding: 1.5rem;
+}
+
+.coach-card-body h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: #1a5f7a;
+}
+
+.coach-card-body p {
+    margin: 0.45rem 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.coach-card-body p strong {
+    color: #333;
+}
+
+.coach-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.coach-links a {
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid #2980b9;
+    color: #2980b9;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.coach-links a:hover {
+    background: #2980b9;
+    color: white;
+}
+
+.view-toggle {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    justify-content: flex-end;
+}
+
+.toggle-btn {
+    padding: 0.75rem 1.15rem;
+    border: 2px solid #2980b9;
+    background: white;
+    color: #2980b9;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn.active,
+.toggle-btn:hover {
+    background: #2980b9;
+    color: white;
+}
+
+.results-count {
+    text-align: center;
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.96rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    color: #777;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.no-results p {
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .search-filter {
+        grid-template-columns: 1fr;
+    }
+
+    .view-toggle {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .coaches-container {
+        padding: 0 1rem;
+    }
+
+    .coaches-header,
+    .coaches-table,
+    .no-results {
+        border-radius: 14px;
+    }
+
+    .coaches-table th,
+    .coaches-table td {
+        padding: 0.9rem 0.8rem;
+    }
+
+    .coach-card img {
+        height: 220px;
+    }
+}

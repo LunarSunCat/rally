@@ -5,250 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Coaches - RALLY</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .coaches-container {
-            max-width: 1400px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        .coaches-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .coaches-header h1 {
-            margin-top: 0;
-        }
-
-        .search-filter {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .search-filter input,
-        .search-filter select {
-            padding: 0.75rem 1rem;
-            border: 2px solid #2980b9;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .search-filter input {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .search-filter input:focus,
-        .search-filter select:focus {
-            outline: none;
-            border-color: #1a5f7a;
-            box-shadow: 0 0 5px rgba(41, 128, 185, 0.3);
-        }
-
-        .sort-by {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .reset-btn {
-            padding: 0.75rem 1.5rem;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .reset-btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .coaches-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .coaches-table thead {
-            background: linear-gradient(135deg, #1a5f7a 0%, #2980b9 100%);
-            color: white;
-        }
-
-        .coaches-table th {
-            padding: 1.2rem;
-            text-align: left;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            user-select: none;
-            transition: all 0.2s ease;
-        }
-
-        .coaches-table th:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .coaches-table th.sortable::after {
-            content: " ⇅";
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
-
-        .coaches-table tbody tr {
-            border-bottom: 1px solid #e0e0e0;
-            transition: all 0.2s ease;
-        }
-
-        .coaches-table tbody tr:hover {
-            background-color: #f8f9fa;
-            box-shadow: inset 0 0 10px rgba(41, 128, 185, 0.1);
-        }
-
-        .coaches-table td {
-            padding: 1rem 1.2rem;
-            color: #555;
-        }
-
-        .coach-name {
-            font-weight: 600;
-            color: #1a5f7a;
-        }
-
-        .utr-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .coaches-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .coach-card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #2980b9;
-            transition: all 0.3s ease;
-        }
-
-        .coach-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(41, 128, 185, 0.2);
-            border-left-color: #ffc107;
-        }
-
-        .coach-card h3 {
-            margin-top: 0;
-            margin-bottom: 1rem;
-            color: #1a5f7a;
-        }
-
-        .coach-card p {
-            margin: 0.5rem 0;
-            font-size: 0.95rem;
-            color: #666;
-        }
-
-        .coach-card strong {
-            color: #1a5f7a;
-        }
-
-        .view-toggle {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            justify-content: flex-end;
-        }
-
-        .toggle-btn {
-            padding: 0.5rem 1rem;
-            border: 2px solid #2980b9;
-            background: white;
-            color: #2980b9;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .toggle-btn.active {
-            background: #2980b9;
-            color: white;
-        }
-
-        .toggle-btn:hover {
-            background: #2980b9;
-            color: white;
-        }
-
-        .results-count {
-            text-align: center;
-            color: #666;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 3rem 2rem;
-            color: #999;
-        }
-
-        .no-results p {
-            font-size: 1.1rem;
-            margin: 0;
-        }
-
-        @media (max-width: 768px) {
-            .search-filter {
-                flex-direction: column;
-            }
-
-            .search-filter input,
-            .search-filter select {
-                width: 100%;
-            }
-
-            .coaches-table {
-                font-size: 0.9rem;
-            }
-
-            .coaches-table th,
-            .coaches-table td {
-                padding: 0.75rem 0.5rem;
-            }
-
-            .coaches-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .view-toggle {
-                justify-content: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="coaches.css">
 </head>
 <body>
     <div class="top-bar">
@@ -276,18 +33,19 @@
     <div class="coaches-container">
         <div class="coaches-header">
             <h1>RALLY Coaching Team</h1>
-            <p>Meet our experienced and dedicated coaches who are committed to developing the next generation of racquet sport champions.</p>
+            <p>Our volunteer coaching team is made up of USTA-ranked youth tennis players ages 11–16. These student-athletes bring both competitive experience and a passion for teaching younger players through fun, focused, and safe training.</p>
+            <p>Whether a child is picking up a racket for the first time or refining strong shots, our coaches use engaging drills, clear instruction, and positive support to help players grow, lead, and shine. Participation is offered on a donation basis, and no child will be excluded due to inability to donate.</p>
+            <p><a class="inline-link" href="https://www.google.com/maps/d/u/0/viewer?mid=1WhZetpAl3KUEncvy58lG0BS90VzkJAQ&ll=34.01059133005272%2C-84.22319105058595&z=11" target="_blank">📍 View our locations</a></p>
         </div>
 
         <div class="search-filter">
-            <input type="text" id="searchInput" placeholder="Search by name, location, or school...">
-            <select id="sortSelect">
-                <option value="name">Sort by Name</option>
-                <option value="utr">Sort by UTR (Highest)</option>
-                <option value="age">Sort by Age</option>
-                <option value="location">Sort by Location</option>
+            <input type="text" id="searchInput" placeholder="Search by name, school, location, or crew...">
+            <select id="crewSelect">
+                <option value="all">All Crews</option>
+                <option value="Ascend Crew">Ascend Crew</option>
+                <option value="Spark Crew">Spark Crew</option>
             </select>
-            <button class="reset-btn" onclick="resetFilters()">Reset</button>
+            <button class="reset-btn" onclick="resetFilters()">Reset Filters</button>
         </div>
 
         <div class="view-toggle">
@@ -304,20 +62,19 @@
                 <thead>
                     <tr>
                         <th class="sortable" onclick="sortBy('name')">Name</th>
-                        <th class="sortable" onclick="sortBy('age')">Age</th>
-                        <th class="sortable" onclick="sortBy('utr')">UTR</th>
+                        <th class="sortable" onclick="sortBy('crew')">Crew</th>
+                        <th class="sortable" onclick="sortBy('training')">Training</th>
+                        <th class="sortable" onclick="sortBy('utrLabel')">UTR</th>
                         <th class="sortable" onclick="sortBy('school')">School</th>
                         <th class="sortable" onclick="sortBy('location')">Location</th>
                     </tr>
                 </thead>
-                <tbody id="coachesTableBody">
-                </tbody>
+                <tbody id="coachesTableBody"></tbody>
             </table>
         </div>
 
         <div id="gridView" style="display: none;">
-            <div class="coaches-grid" id="coachesGrid">
-            </div>
+            <div class="coaches-grid" id="coachesGrid"></div>
         </div>
 
         <div id="noResults" class="no-results" style="display: none;">
@@ -334,133 +91,6 @@
         </div>
     </footer>
 
-    <script>
-        let coachesData = [];
-        let filteredData = [];
-        let currentView = 'table';
-
-        // Load coaches data
-        async function loadCoaches() {
-            try {
-                const response = await fetch('coaches.json');
-                coachesData = await response.json();
-                filteredData = [...coachesData];
-                renderCoaches();
-            } catch (error) {
-                console.error('Error loading coaches:', error);
-                document.getElementById('resultsCount').textContent = 'Error loading coaches data.';
-            }
-        }
-
-        // Render coaches based on current view
-        function renderCoaches() {
-            updateResultsCount();
-            
-            if (currentView === 'table') {
-                renderTableView();
-            } else {
-                renderGridView();
-            }
-
-            // Show/hide no results message
-            const noResults = document.getElementById('noResults');
-            if (filteredData.length === 0) {
-                noResults.style.display = 'block';
-                document.getElementById('tableView').style.display = 'none';
-                document.getElementById('gridView').style.display = 'none';
-            } else {
-                noResults.style.display = 'none';
-                document.getElementById('tableView').style.display = currentView === 'table' ? 'block' : 'none';
-                document.getElementById('gridView').style.display = currentView === 'grid' ? 'block' : 'none';
-            }
-        }
-
-        // Render table view
-        function renderTableView() {
-            const tbody = document.getElementById('coachesTableBody');
-            tbody.innerHTML = filteredData.map(coach => `
-                <tr>
-                    <td class="coach-name">${coach.name}</td>
-                    <td>${coach.age}</td>
-                    <td><span class="utr-badge">${coach.utr}</span></td>
-                    <td>${coach.school}</td>
-                    <td>${coach.location}</td>
-                </tr>
-            `).join('');
-        }
-
-        // Render grid view
-        function renderGridView() {
-            const grid = document.getElementById('coachesGrid');
-            grid.innerHTML = filteredData.map(coach => `
-                <div class="coach-card">
-                    <h3>${coach.name}</h3>
-                    <p><strong>Age:</strong> ${coach.age}</p>
-                    <p><strong>UTR:</strong> <span class="utr-badge">${coach.utr}</span></p>
-                    <p><strong>School:</strong> ${coach.school}</p>
-                    <p><strong>Location:</strong> ${coach.location}</p>
-                </div>
-            `).join('');
-        }
-
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            filteredData = coachesData.filter(coach => 
-                coach.name.toLowerCase().includes(searchTerm) ||
-                coach.location.toLowerCase().includes(searchTerm) ||
-                coach.school.toLowerCase().includes(searchTerm)
-            );
-            renderCoaches();
-        });
-
-        // Sort functionality
-        document.getElementById('sortSelect').addEventListener('change', function(e) {
-            sortBy(e.target.value);
-        });
-
-        // Sort by column
-        function sortBy(field) {
-            filteredData.sort((a, b) => {
-                let aValue = a[field];
-                let bValue = b[field];
-
-                if (field === 'utr' || field === 'age') {
-                    return bValue - aValue; // Descending for numbers
-                } else {
-                    return aValue.localeCompare(bValue); // Ascending for strings
-                }
-            });
-
-            renderCoaches();
-            document.getElementById('sortSelect').value = field;
-        }
-
-        // Switch view
-        function switchView(view) {
-            currentView = view;
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            renderCoaches();
-        }
-
-        // Update results count
-        function updateResultsCount() {
-            const count = filteredData.length;
-            document.getElementById('resultsCount').textContent = 
-                `Showing ${count} of ${coachesData.length} coach${coachesData.length !== 1 ? 'es' : ''}`;
-        }
-
-        // Reset filters
-        function resetFilters() {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('sortSelect').value = 'name';
-            filteredData = [...coachesData];
-            renderCoaches();
-        }
-
-        // Load coaches on page load
-        loadCoaches();
-    </script>
+    <script src="coaches.js"></script>
 </body>
 </html>
