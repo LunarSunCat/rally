@@ -97,7 +97,8 @@ document.getElementById('crewSelect').addEventListener('change', applyFilters);
 function sortBy(field) {
     sortData(field);
     renderCoaches();
-    document.getElementById('sortSelect')?.value = field;
+    const sortSelect = document.getElementById('sortSelect');
+    if (sortSelect) sortSelect.value = field;
 }
 
 function switchView(view) {
