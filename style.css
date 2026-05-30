@@ -49,6 +49,24 @@ nav {
     align-items: center;
 }
 
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: white;
+}
+
 nav a, .dropdown > a {
     color: white;
     text-decoration: none;
@@ -112,10 +130,23 @@ nav a:hover, .dropdown > a:hover {
         padding: 0.5rem 1rem;
     }
 
+    .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 220px;
+    }
+
     nav {
+        display: none;
         flex-direction: column;
         width: 100%;
         gap: 0;
+    }
+
+    .top-inner.nav-open nav {
+        display: flex;
     }
 
     nav a {
