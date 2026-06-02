@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+    {% if page.css %}
+      <link rel="stylesheet" href="{{ page.css | relative_url }}" />
+    {% endif %}
+  </head>
+  <body>
+    {% include header.html %}
+
+    <main>
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <script>
+      const menuToggle = document.querySelector('.menu-toggle');
+      const topInner = document.querySelector('.top-inner');
+
+      if (menuToggle && topInner) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = topInner.classList.toggle('nav-open');
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Coaches - RALLY</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    
+      <link rel="stylesheet" href="/assets/css/coaches.css" />
+    
+  </head>
+  <body>
+    <div class="top-bar">
+  <div class="top-inner">
+    <img src="/image/RALLY_logo.jpg" alt="RALLY Logo" class="logo" />
+    <button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation menu">☰ Menu</button>
+    <nav>
+      <a href="/index.html">HOME</a>
+      <a href="/coaches.html">TRAINING</a>
+      <div class="dropdown">
+        <a href="#events">EVENTS ▾</a>
+        <div class="dropdown-content">
+          <a href="/2026.html" target="_blank">2026 Tournament</a>
+          <a href="/2025D.html" target="_blank">2025 Doubles Tournament</a>
+          <a href="/2025.html" target="_blank">2025 Tournament</a>
+          <a href="/2024.html" target="_blank">2024 Tournament</a>
+        </div>
+      </div>
+      <a href="/inclusive/index.html">IMPACT</a>
+      <a href="/achievements.html">ACHIEVEMENTS</a>
+      <a href="/index.html#contacts">CONTACT</a>
+    </nav>
+  </div>
+</div>
+
+
+    <main>
+                  <p>Whether a child is picking up a racket for the first time or refining strong shots, our coaches use engaging drills, clear instruction, and positive support to help players grow, lead, and shine. Participation is offered on a donation basis, and no child will be excluded due to inability to donate.</p>
+            <p><a class="inline-link" href="https://www.google.com/maps/d/u/0/viewer?mid=1WhZetpAl3KUEncvy58lG0BS90VzkJAQ&ll=34.01059133005272%2C-84.22319105058595&z=11" target="_blank">📍 View our locations</a></p>
+        </div>
+
+        <div class="search-filter">
+            <input type="text" id="searchInput" placeholder="Search by name, school, location, or crew...">
+            <select id="crewSelect">
+                <option value="all">All Crews</option>
+                <option value="Ascend Crew">Ascend Crew</option>
+                <option value="Spark Crew">Spark Crew</option>
+            </select>
+            <button class="reset-btn" onclick="resetFilters()">Reset Filters</button>
+        </div>
+
+        <div class="view-toggle">
+            <button class="toggle-btn active" onclick="switchView('table')">Table View</button>
+            <button class="toggle-btn" onclick="switchView('grid')">Card View</button>
+        </div>
+
+        <div class="results-count">
+            <span id="resultsCount">Loading coaches...</span>
+        </div>
+
+        <div id="tableView">
+            <table class="coaches-table">
+                <thead>
+                    <tr>
+                        <th class="sortable" onclick="sortBy('name')">Name</th>
+                        <th class="sortable" onclick="sortBy('crew')">Crew</th>
+                        <th class="sortable" onclick="sortBy('training')">Training</th>
+                        <th class="sortable" onclick="sortBy('utrLabel')">UTR</th>
+                        <th class="sortable" onclick="sortBy('school')">School</th>
+                        <th class="sortable" onclick="sortBy('location')">Location</th>
+                    </tr>
+                </thead>
+                <tbody id="coachesTableBody"></tbody>
+            </table>
+        </div>
+
+        <div id="gridView" style="display: none;">
+            <div class="coaches-grid" id="coachesGrid"></div>
+        </div>
+
+        <div id="noResults" class="no-results" style="display: none;">
+            <p>No coaches found matching your search criteria.</p>
+        </div>
+    </div>
+
+    <script src="/assets/js/coaches.js"></script>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-section contact" id="contacts">
+      <h3>Contact Us</h3>
+      <p>Email: atlrallyyou@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+
+    <script>
+      const menuToggle = document.querySelector('.menu-toggle');
+      const topInner = document.querySelector('.top-inner');
+
+      if (menuToggle && topInner) {
+        menuToggle.addEventListener('click', () => {
+          const isOpen = topInner.classList.toggle('nav-open');
+          menuToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+    </script>
+  </body>
+</html>

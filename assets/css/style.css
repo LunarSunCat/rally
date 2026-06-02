@@ -84,6 +84,31 @@ nav a:hover, .dropdown > a:hover {
     border-bottom-color: #ffc107;
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.home-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    background: #ffc107;
+    color: #1a5f7a;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.home-button:hover {
+    transform: translateY(-1px);
+    background: #ffda5f;
+}
+
 /* ===== DROPDOWN MENU ===== */
 .dropdown {
     position: relative;

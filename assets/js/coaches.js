@@ -5,7 +5,7 @@ let currentSort = 'name';
 
 async function loadCoaches() {
     try {
-        const response = await fetch('coaches.json');
+        const response = await fetch('/assets/data/coaches.json');
         coachesData = await response.json();
         filteredData = [...coachesData];
         sortData(currentSort);

@@ -1,40 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Coaches - RALLY</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="coaches.css">
-</head>
-<body>
-    <div class="top-bar">
-        <div class="top-inner">
-            <img src="image/RALLY_logo.jpg" alt="RALLY Logo" class="logo">
-            <button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation menu">☰ Menu</button>
-            <nav>
-                <a href="index.html">HOME</a>
-                <a href="coaches.html">TRAINING</a>
-                <div class="dropdown">
-                    <a href="#events">EVENTS ▾</a>
-                    <div class="dropdown-content">
-                        <a href="2026.html" target="_blank">2026 Tournament</a>
-                        <a href="2025D.html" target="_blank">2025 Doubles Tournament</a>
-                        <a href="2025.html" target="_blank">2025 Tournament</a>
-                        <a href="2024.html" target="_blank">2024 Tournament</a>
-                    </div>
-                </div>
-                <a href="inclusive/index.html">IMPACT</a>
-                <a href="achievements/index.html">ACHIEVEMENTS</a>
-                <a href="index.html#contacts">CONTACT</a>
-            </nav>
-        </div>
-    </div>
+---
+layout: default
+title: Our Coaches - RALLY
+css: /assets/css/coaches.css
+---
 
-    <div class="coaches-container">
-        <div class="coaches-header">
-            <h1>RALLY Coaching Team</h1>
-            <p>Our volunteer coaching team is made up of USTA-ranked youth tennis players ages 11–16. These student-athletes bring both competitive experience and a passion for teaching younger players through fun, focused, and safe training.</p>
             <p>Whether a child is picking up a racket for the first time or refining strong shots, our coaches use engaging drills, clear instruction, and positive support to help players grow, lead, and shine. Participation is offered on a donation basis, and no child will be excluded due to inability to donate.</p>
             <p><a class="inline-link" href="https://www.google.com/maps/d/u/0/viewer?mid=1WhZetpAl3KUEncvy58lG0BS90VzkJAQ&ll=34.01059133005272%2C-84.22319105058595&z=11" target="_blank">📍 View our locations</a></p>
         </div>
@@ -83,26 +52,4 @@
         </div>
     </div>
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-section contact">
-                <h3>Contact Us</h3>
-                <p>Email: atlrallyyou@gmail.com</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const topInner = document.querySelector('.top-inner');
-
-        if (menuToggle && topInner) {
-            menuToggle.addEventListener('click', () => {
-                const isOpen = topInner.classList.toggle('nav-open');
-                menuToggle.setAttribute('aria-expanded', String(isOpen));
-            });
-        }
-    </script>
-    <script src="coaches.js"></script>
-</body>
-</html>
+    <script src="/assets/js/coaches.js"></script>
