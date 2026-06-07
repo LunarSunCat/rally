@@ -199,23 +199,56 @@ title: Achievements
     text-decoration: underline;
   }
   .stats-row {
-    display: grid;
+    display: flex;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
   }
   .stats-pill {
-    background: #fff;
-    border: 1px solid #e5f1f6;
-    border-radius: 999px;
-    padding: 0.8rem 1rem;
+    background: linear-gradient(135deg, rgba(14, 90, 132, 0.08), rgba(255, 255, 255, 0.95));
+    border: 1px solid rgba(14, 90, 132, 0.15);
+    border-radius: 24px;
+    padding: 0.95rem 1.1rem;
+    flex: 1 1 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #08607c;
-    font-weight: 600;
+    color: #0d4b5d;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(6, 64, 90, 0.06);
   }
   .stats-pill span:first-child {
-    opacity: 0.7;
+    opacity: 0.8;
+    font-size: 0.95rem;
+  }
+  .intro-box {
+    background: linear-gradient(180deg, #f2fbff 0%, #eef8fd 100%);
+    border: 1px solid #d4edf7;
+    border-radius: 16px;
+    padding: 1.25rem 1.35rem;
+    margin-top: 1rem;
+    box-shadow: 0 12px 32px rgba(12, 50, 70, 0.07);
+    color: #164a5e;
+    line-height: 1.75;
+  }
+  .intro-box p {
+    margin: 0 0 0.9rem;
+  }
+  .intro-box p:last-child {
+    margin-bottom: 0;
+  }
+  .panel-note {
+    margin: 1rem 0 1.25rem;
+    padding: 1.1rem 1.15rem;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(13, 75, 104, 0.06), rgba(255, 255, 255, 0.9));
+    border: 1px solid rgba(13, 75, 104, 0.15);
+    color: #0e4e6b;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  }
+  .panel-note strong {
+    color: #0d4b5d;
   }
   @media (max-width: 780px) {
     .page-header {
@@ -233,27 +266,16 @@ title: Achievements
   <div class="page-header">
     <div>
       <h1>RALLY Athlete Achievements</h1>
-      <p class="page-intro">These highlights showcase our coaches’ tournament results, team achievements, and school tennis leadership. Use the controls below to find the results you care about without scrolling through one long page.</p>
+      <div class="intro-box">
+        <p>At RALLY, we believe great coaching begins with real experience. Our coaches are not only mentors and role models — they are also active competitors who have earned strong results in USTA tournaments, team competitions, and high/middle school tennis. These accomplishments demonstrate both their competitive excellence and their ability to lead by example. Their achievements reflect the level of training, commitment, and character that define the RALLY community.</p>
+        <p>At RALLY, our coaches do more than teach tennis fundamentals. They share real competitive experience, strong work ethic, and leadership developed through tournament play, team competition, and school athletics. This helps create a learning environment where younger players can grow not only in skill, but also in confidence, discipline, and character.</p>
+        <p>RALLY coaches are dedicated athletes, teammates, and mentors. Their achievements on the court are part of what makes the RALLY experience unique. Interested in training with RALLY or learning more about our youth coaches? Contact us at <a href="mailto:atlrallyyou@gmail.com">atlrallyyou@gmail.com</a> to learn more about our programs.</p>
+      </div>
     </div>
     <div class="stats-row">
       <div class="stats-pill"><span>Team entries</span><strong id="teamCount">0</strong></div>
       <div class="stats-pill"><span>School records</span><strong id="schoolCount">0</strong></div>
       <div class="stats-pill"><span>Individual results</span><strong id="individualCount">0</strong></div>
-    </div>
-  </div>
-
-  <div class="summary-grid">
-    <div class="summary-card">
-      <h3>Why this matters</h3>
-      <p>Strong results on the court reflect RALLY coaching experience, teamwork, and competitive growth.</p>
-    </div>
-    <div class="summary-card">
-      <h3>Search as you go</h3>
-      <p>Filter by age, grade, player name, or event to find the information most relevant to you.</p>
-    </div>
-    <div class="summary-card">
-      <h3>Stay focused</h3>
-      <p>Each section is collapsible so you can keep the page compact and scan content quickly.</p>
     </div>
   </div>
 
@@ -265,7 +287,9 @@ title: Achievements
 
   <div id="teamPanel" class="tab-panel active">
     <div class="section-content">
-      <p>Team competition results from our coaches’ recent USTA seasons.</p>
+      <div class="panel-note">
+        In addition to individual success, RALLY coaches also compete together as a team in USTA team events. These competitions strengthen teamwork, match toughness, and leadership, while allowing our players to represent RALLY in a highly competitive environment. Competing as a team is an important part of the RALLY experience. Our coaches learn how to support one another, perform under pressure, and contribute to a larger goal. These team achievements reflect not only talent, but also trust, sportsmanship, and collective effort.
+      </div>
       <div class="controls">
         <input id="teamSearch" class="search-input" placeholder="Search players or event..." />
         <select id="teamFilterAge" class="filter-select">
@@ -282,7 +306,9 @@ title: Achievements
 
   <div id="schoolPanel" class="tab-panel">
     <div class="section-content">
-      <p>School tennis participation and achievements for coaches competing on varsity and JV teams.</p>
+      <div class="panel-note">
+        Many of our coaches also compete for their school tennis teams and contribute at a high level in varsity and junior varsity competition. Their school results show that they are not only strong tournament players, but also dependable teammates and leaders within their school communities. Our coaches bring their experience from school tennis into their work with younger players. Through varsity competition, regional matches, and team leadership, they continue to develop the discipline, resilience, and maturity that make them effective role models on and off the court.
+      </div>
       <div class="controls">
         <input id="schoolSearch" class="search-input" placeholder="Search player or school..." />
         <select id="schoolFilterGrade" class="filter-select">
@@ -301,7 +327,9 @@ title: Achievements
 
   <div id="individualPanel" class="tab-panel">
     <div class="section-content">
-      <p>Individual USTA tournament results for our coaches across age divisions.</p>
+      <div class="panel-note">
+        Our coaches compete in USTA junior tournaments throughout the year and have earned impressive individual results across multiple levels of competition. These individual results reflect the hard work, discipline, and match experience that our coaches bring to every lesson and every student they mentor.
+      </div>
       <div class="controls">
         <input id="individualSearch" class="search-input" placeholder="Search player, event, or finish..." />
         <select id="individualFilterAge" class="filter-select">
