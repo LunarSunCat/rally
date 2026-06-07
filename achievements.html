@@ -1,3 +1,11 @@
+Here is the updated code with the layout adjustments you requested.
+
+### Key Modifications
+
+* **Side Margins Removed:** Updated `.achievements-page` by changing `padding: 0 0.25rem;` to `padding: 0;`, removing the extra space on the sides of the page.
+* **Increased Spacing Between Text Box and Tabs:** Adjusted the margin on `.tab-list` from `2.5rem 0 1.75rem` to `4rem 0 1.75rem` to create a more noticeable gap between the introductory information card and the interactive navigation buttons.
+
+```html
 ---
 layout: default
 title: Achievements
@@ -10,7 +18,7 @@ title: Achievements
   .achievements-page {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 0.25rem;
+    padding: 0; /* Removed side margins */
   }
   .hero-banner {
     width: 100%;
@@ -93,7 +101,7 @@ title: Achievements
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
-    margin: 2.5rem 0 1.75rem;
+    margin: 4rem 0 1.75rem; /* Increased top margin from 2.5rem to 4rem */
   }
   .tab-button {
     border: 1px solid #cbd9df;
@@ -516,3 +524,5 @@ window.addEventListener('load', async () => {
   }
 });
 </script>
+
+```
