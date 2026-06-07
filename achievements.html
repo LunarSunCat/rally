@@ -4,331 +4,444 @@ title: Achievements
 ---
 
 <style>
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 1rem;
+  .achievements-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  .hero-banner {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+  .page-header {
+    margin: 1.5rem 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .page-header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 2.5vw, 3rem);
+    color: #0d4b5d;
+  }
+  .page-intro {
+    flex: 1 1 380px;
+    min-width: 280px;
+    line-height: 1.7;
+    color: #3c5058;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0 1.4rem;
+  }
+  .summary-card {
+    background: #fff;
+    padding: 1.25rem;
+    border-radius: 14px;
+    border: 1px solid #e6eef1;
+    box-shadow: 0 8px 20px rgba(12, 50, 70, 0.05);
+  }
+  .summary-card h3 {
+    margin: 0 0 0.6rem;
+    font-size: 1rem;
+    color: #0d4b5d;
+  }
+  .summary-card p {
+    margin: 0;
+    font-size: 0.98rem;
+    color: #4b6570;
+    line-height: 1.6;
+  }
+  .section-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0 0.75rem;
+    background: #f2fbff;
+    border: 1px solid #dceff4;
+  }
+  .section-summary .section-title {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #06425a;
+    font-weight: 700;
+  }
+  .section-summary button {
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    border: 1px solid #0d4b5d;
+    background: #0d4b5d;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .section-summary button:hover {
+    background: #276a86;
+  }
+  details {
+    border: 1px solid #dbe8ee;
+    border-radius: 14px;
+    background: #fff;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 1.15rem 1.25rem;
+    font-size: 1.1rem;
+    color: #0d4b5d;
+    background: #f8fbfd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .summary-arrow {
+    transition: transform 0.2s ease;
+  }
+  details[open] .summary-arrow {
+    transform: rotate(90deg);
+  }
+  .section-content {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  .search-input,
+  .filter-select {
+    min-width: 180px;
+    flex: 1 1 220px;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #cbd9df;
+    background: #f8fcff;
+    color: #084754;
+  }
+  table.card-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table.card-table th,
+  table.card-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid #eef4f7;
+    text-align: left;
+  }
+  table.card-table th {
+    background: #eef8fc;
+    color: #084754;
+    font-weight: 700;
+  }
+  table.card-table tbody tr:hover {
+    background: #f7fbfd;
+  }
+  table.card-table td img {
+    max-width: 120px;
+    border-radius: 8px;
+    display: block;
+    cursor: pointer;
+  }
+  .quick-links {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: #fcfdfe;
+    border: 1px solid #d8e5ec;
+    border-radius: 14px;
+  }
+  .quick-links a {
+    color: #0d4b5d;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .quick-links a:hover {
+    text-decoration: underline;
+  }
+  .stats-row {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  .stats-pill {
+    background: #fff;
+    border: 1px solid #e5f1f6;
+    border-radius: 999px;
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #08607c;
+    font-weight: 600;
+  }
+  .stats-pill span:first-child {
+    opacity: 0.7;
+  }
+  @media (max-width: 780px) {
+    .page-header {
+      flex-direction: column;
     }
-
-    .home-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1rem;
-      background: #ffc107;
-      color: #1a5f7a;
-      border-radius: 10px;
-      font-weight: 700;
-      text-decoration: none;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
-      transition: transform 0.2s ease, background-color 0.2s ease;
+    .controls {
+      flex-direction: column;
     }
+  }
+</style>
 
-    .home-button:hover {
-      transform: translateY(-1px);
-      background: #ffda5f;
-    }
+<div class="achievements-page">
+  <img class="hero-banner" src="/images/coachteam2026.png" alt="RALLY coaches team banner">
 
-    .achievement-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.8rem 0;
-    }
-
-    .achievement-table th,
-    .achievement-table td {
-      border: 1px solid #e0e0e0;
-      padding: 0.95rem;
-      vertical-align: top;
-    }
-
-    .achievement-table th {
-      background: #f3f7fb;
-      color: #1a5f7a;
-      font-weight: 700;
-    }
-
-    .achievement-table img.thumb {
-      max-width: 120px;
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      display: block;
-    }
-
-    .intro-message {
-      margin-bottom: 2rem;
-    }
-
-    .intro-message h3 {
-      margin-top: 1.8rem;
-    }
-
-    .news-column ul {
-      list-style: disc inside;
-      margin: 1rem 0 0 0;
-      padding-left: 0;
-      color: #555;
-    }
-
-    .news-column ul li {
-      margin-bottom: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      .nav-actions {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .home-button {
-        width: auto;
-      }
-    }
-  </style>
-  <!-- 横幅 -->
-<img src="/images/coachteam2026.png" alt="Banner" style="width: 100%; height: auto;">
-
-  <hr style="width: 85%; margin: 0 auto; border: 1px solid darkgray;">
-  <div class="container">
-    <div class="text-column">
-
-<div class="intro-message">
-    <h2>RALLY Athlete Achievements</h2>
-  <p>
-    At RALLY, we believe great coaching begins with real experience. Our coaches are not only mentors and role models —-- they are also active competitors who have earned strong results in USTA tournaments, team competitions, and high/middle school tennis. These accomplishments demonstrate both their competitive excellence and their ability to lead by example. Their achievements reflect the level of training, commitment, and character that define the RALLY community.
-  </p>
-
-  <p>
-    At RALLY, our coaches do more than teach tennis fundamentals. They share real competitive experience, strong work ethic, and leadership developed through tournament play, team competition, and school athletics. This helps create a learning environment where younger players can grow not only in skill, but also in confidence, discipline, and character. 
-  </p>
-
-  <p>RALLY coaches are dedicated athletes, teammates, and mentors. Their achievements on the court are part of what makes the RALLY experience unique. Interested in training with RALLY or learning more about our youth coaches? Contact us (atlrallyyou@gmail.com) to learn more about our programs.
-  </p>
-</div>
-
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox">
-  <span class="close">&times;</span>
-  <img class="lightbox-img" id="lightbox-img">
-</div>
-
-<div class="intro-message">
-  <h3>Team Competitions</h3>
-  <p>In addition to individual success, RALLY coaches also compete together as a team in USTA team events. These competitions strengthen teamwork, match toughness, and leadership, while allowing our players to represent RALLY in a highly competitive environment.</p>
-
-  <div class="controls">
-    <input id="teamSearch" class="search-input" placeholder="Search players or event..." />
-    <select id="teamFilterAge" class="filter-select">
-      <option value="">All ages</option>
-      <option>18U</option>
-      <option>16U</option>
-      <option>14U</option>
-      <option>12U</option>
-    </select>
+  <div class="page-header">
+    <div>
+      <h1>RALLY Athlete Achievements</h1>
+      <p class="page-intro">These highlights showcase our coaches’ tournament results, team achievements, and school tennis leadership. Use the controls below to find the results you care about without scrolling through one long page.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stats-pill"><span>Team entries</span><strong id="teamCount">0</strong></div>
+      <div class="stats-pill"><span>School records</span><strong id="schoolCount">0</strong></div>
+      <div class="stats-pill"><span>Individual results</span><strong id="individualCount">0</strong></div>
+    </div>
   </div>
 
-  <div id="teamSection" class="data-section"></div>
-</div>
-
-<div class="intro-message">
-  <h3>School Teams</h3>
-  <p>Many of our coaches also compete for their school tennis teams and contribute at a high level in varsity and junior varsity competition.</p>
-
-  <div class="controls">
-    <input id="schoolSearch" class="search-input" placeholder="Search player or school..." />
-    <select id="schoolFilterGrade" class="filter-select">
-      <option value="">All grades</option>
-      <option>Senior</option>
-      <option>Junior</option>
-      <option>Sophomore</option>
-      <option>Freshman</option>
-      <option>8th</option>
-      <option>7th</option>
-    </select>
+  <div class="summary-grid">
+    <div class="summary-card">
+      <h3>Why this matters</h3>
+      <p>Strong results on the court reflect RALLY coaching experience, teamwork, and competitive growth.</p>
+    </div>
+    <div class="summary-card">
+      <h3>Search as you go</h3>
+      <p>Filter by age, grade, player name, or event to find the information most relevant to you.</p>
+    </div>
+    <div class="summary-card">
+      <h3>Stay focused</h3>
+      <p>Each section is collapsible so you can keep the page compact and scan content quickly.</p>
+    </div>
   </div>
 
-  <div id="schoolSection" class="data-section"></div>
-</div>
+  <details open>
+    <summary>
+      Team Competitions
+      <span class="summary-arrow">▶</span>
+    </summary>
+    <div class="section-content">
+      <p>Team competition results from our coaches’ recent USTA seasons.</p>
+      <div class="controls">
+        <input id="teamSearch" class="search-input" placeholder="Search players or event..." />
+        <select id="teamFilterAge" class="filter-select">
+          <option value="">All ages</option>
+          <option>18U</option>
+          <option>16U</option>
+          <option>14U</option>
+          <option>12U</option>
+        </select>
+      </div>
+      <div id="teamSection"></div>
+    </div>
+  </details>
 
-<div class="intro-message">
-  <h3>Individual Tournaments</h3>
-  <p>Our coaches compete in USTA junior tournaments throughout the year and have earned impressive individual results across multiple levels of competition.</p>
+  <details>
+    <summary>
+      School Teams
+      <span class="summary-arrow">▶</span>
+    </summary>
+    <div class="section-content">
+      <p>School tennis participation and achievements for coaches competing on varsity and JV teams.</p>
+      <div class="controls">
+        <input id="schoolSearch" class="search-input" placeholder="Search player or school..." />
+        <select id="schoolFilterGrade" class="filter-select">
+          <option value="">All grades</option>
+          <option>Senior</option>
+          <option>Junior</option>
+          <option>Sophomore</option>
+          <option>Freshman</option>
+          <option>8th</option>
+          <option>7th</option>
+        </select>
+      </div>
+      <div id="schoolSection"></div>
+    </div>
+  </details>
 
-  <div class="controls">
-    <input id="individualSearch" class="search-input" placeholder="Search player, event, or finish..." />
-    <select id="individualFilterAge" class="filter-select">
-      <option value="">All ages</option>
-      <option>18U</option>
-      <option>16U</option>
-      <option>14U</option>
-      <option>12U</option>
-    </select>
+  <details>
+    <summary>
+      Individual Tournaments
+      <span class="summary-arrow">▶</span>
+    </summary>
+    <div class="section-content">
+      <p>Individual USTA tournament results for our coaches across age divisions.</p>
+      <div class="controls">
+        <input id="individualSearch" class="search-input" placeholder="Search player, event, or finish..." />
+        <select id="individualFilterAge" class="filter-select">
+          <option value="">All ages</option>
+          <option>18U</option>
+          <option>16U</option>
+          <option>14U</option>
+          <option>12U</option>
+        </select>
+      </div>
+      <div id="individualSection"></div>
+    </div>
+  </details>
+
+  <div class="quick-links">
+    <p><strong>Quick Links</strong></p>
+    <p><a href="/index.html">Back to Home</a> · <a href="/coaches.html">Training</a> · <a href="/achievements.html">Achievements</a></p>
+    <p><strong>Contact</strong><br>Email: atlrallyyou@gmail.com</p>
   </div>
-
-  <div id="individualSection" class="data-section"></div>
 </div>
-      <td>USTA L7, Singles</td>
-      <td>Champion</td>
-      <td>
-        <img src="/images/Oliver7S12.jpg" class="thumb" />
-      </td>
-    </tr>
-    <tr>
-      <td>12U</td>
-      <td>Seven Yin</td>
-      <td>USTA L7, Singles</td>
-      <td>Champion</td>
-      <td>
-        <img src="/images/Seven7S12.jpg" class="thumb" />
-      </td>
-    </tr>
-    <tr>
-      <td>12U</td>
-      <td>Emma Jiang</td>
-      <td>USTA L7, Singles</td>
-      <td>Finalist</td>
-      <td>
-        <img src="/images/Emma7S12.jpg" class="thumb" />
-      </td>
-    </tr>
-    <tr>
-      <td>12U</td>
-      <td>Florence Yu</td>
-      <td>USTA L6, Singles</td>
-      <td>Finalist</td>
-      <td>
-        <img src="/images/Flora7S12-2.jpg" class="thumb" />
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
-    <aside class="news-column">
-      <h2>Achievement Highlights</h2>
-      <p>RALLY coaches have earned strong results in USTA tournaments, school team competition, and regional events. This page celebrates team champions, state finalists, and individual title winners across our 2025–2026 season.</p>
-      <ul>
-        <li>Multiple division champions in 12U, 14U, and 18U team competition.</li>
-        <li>Individual USTA singles and doubles champions across 12U–18U.</li>
-        <li>School tennis leaders representing Walton, Johns Creek, Lambert, and more.</li>
-      </ul>
-      <p><strong>Quick Links</strong></p>
-      <p><a href="index.html">Back to Home</a></p>
-      <p><strong>Contact</strong><br>Email: atlrallyyou@gmail.com</p>
-    </aside>
-  </div>
 
-  <style>
-    /* Cleaner UI styles */
-    .controls { display:flex; gap:10px; align-items:center; margin:12px 0 18px; }
-    .search-input { flex:1; padding:8px 10px; border-radius:8px; border:1px solid #ddd; }
-    .filter-select { padding:8px 10px; border-radius:8px; border:1px solid #ddd; }
-    .data-section { margin-top:8px; }
-    .card-table { width:100%; border-collapse:collapse; box-shadow:0 4px 14px rgba(10,20,30,0.06); border-radius:8px; overflow:hidden; }
-    .card-table th, .card-table td { padding:10px 12px; text-align:left; border-bottom:1px solid #f0f0f0; }
-    .card-table thead { background:#f7fbfc; color:#0b5566; font-weight:700; }
-    .card { background:white; padding:14px; border-radius:10px; margin-bottom:16px; }
-    .thumb { max-width:120px; border-radius:6px; cursor:pointer; }
-    @media (max-width:700px) { .controls { flex-direction:column; align-items:stretch; } .thumb{max-width:90px;} }
-  </style>
-
-  <script>
-    async function fetchJSON(path) {
-      const res = await fetch(path);
-      if (!res.ok) throw new Error('Failed to load ' + path);
-      return res.json();
-    }
-
-    function renderTable(container, columns, data) {
-      const card = document.createElement('div'); card.className = 'card';
-      const table = document.createElement('table'); table.className = 'card-table';
-      const thead = document.createElement('thead'); const tr = document.createElement('tr');
-      columns.forEach(c => { const th = document.createElement('th'); th.textContent = c.label; tr.appendChild(th); });
-      thead.appendChild(tr); table.appendChild(thead);
-      const tbody = document.createElement('tbody');
-      data.forEach(row => {
-        const r = document.createElement('tr');
-        columns.forEach(c => {
-          const td = document.createElement('td');
-          const val = row[c.key] || '';
-          if (c.key === 'photo' && val) {
-            const img = document.createElement('img'); img.src = val; img.className = 'thumb'; img.alt = row.player || '';
-            td.appendChild(img);
-          } else if (c.key === 'school' && row.link) {
-            const a = document.createElement('a'); a.href = row.link; a.target = '_blank'; a.textContent = val; td.appendChild(a);
-          } else {
-            td.textContent = val;
-          }
-          r.appendChild(td);
-        });
-        tbody.appendChild(r);
-      });
-      table.appendChild(tbody); card.appendChild(table); container.innerHTML = ''; container.appendChild(card);
-
-      // attach lightbox handlers for images
-      const thumbs = container.querySelectorAll('.thumb');
-      thumbs.forEach(img => img.addEventListener('click', () => showLightbox(img.src)));
-    }
-
-    function showLightbox(src) {
-      let lb = document.getElementById('dynamic-lightbox');
-      if (!lb) {
-        lb = document.createElement('div'); lb.id = 'dynamic-lightbox';
-        lb.style = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);z-index:9999;';
-        const img = document.createElement('img'); img.id='dynamic-lightbox-img'; img.style='max-width:90%;max-height:90%;border-radius:6px;';
-        const close = document.createElement('button'); close.textContent='✕'; close.style='position:absolute;top:20px;right:24px;font-size:20px;color:white;background:none;border:none;cursor:pointer;';
-        close.addEventListener('click', () => lb.remove());
-        lb.appendChild(img); lb.appendChild(close); document.body.appendChild(lb);
+<script>
+async function fetchJSON(path) {
+  const res = await fetch(path);
+  if (!res.ok) throw new Error('Failed to load ' + path);
+  return res.json();
+}
+function renderTable(container, columns, data) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  const table = document.createElement('table');
+  table.className = 'card-table';
+  const thead = document.createElement('thead');
+  const headRow = document.createElement('tr');
+  columns.forEach(c => {
+    const th = document.createElement('th');
+    th.textContent = c.label;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+  const tbody = document.createElement('tbody');
+  data.forEach(row => {
+    const tr = document.createElement('tr');
+    columns.forEach(c => {
+      const td = document.createElement('td');
+      const val = row[c.key] || '';
+      if (c.key === 'photo' && val) {
+        const img = document.createElement('img');
+        img.src = val;
+        img.alt = row.player || 'Achievement';
+        img.className = 'thumb';
+        img.addEventListener('click', () => showLightbox(img.src));
+        td.appendChild(img);
+      } else if (c.key === 'school' && row.link) {
+        const a = document.createElement('a');
+        a.href = row.link;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = val;
+        td.appendChild(a);
+      } else {
+        td.textContent = val;
       }
-      document.getElementById('dynamic-lightbox-img').src = src;
-      document.getElementById('dynamic-lightbox').style.display = 'flex';
-    }
-
-    // load and wire up all sections
-    window.addEventListener('load', async () => {
-      try {
-        const team = await fetchJSON('{{ "/assets/data/team_competitions.json" | relative_url }}');
-        const school = await fetchJSON('{{ "/assets/data/school_teams.json" | relative_url }}');
-        const individual = await fetchJSON('{{ "/assets/data/individual_tournaments.json" | relative_url }}');
-
-        const teamSection = document.getElementById('teamSection');
-        renderTable(teamSection, [ {key:'age', label:'Age'}, {key:'players', label:'Players'}, {key:'event', label:'Event'}, {key:'finish', label:'Finish'}, {key:'photo', label:'Photo'} ], team);
-
-        const schoolSection = document.getElementById('schoolSection');
-        renderTable(schoolSection, [ {key:'grade', label:'Grade'}, {key:'player', label:'Player'}, {key:'school', label:'School'} ], school);
-
-        const individualSection = document.getElementById('individualSection');
-        renderTable(individualSection, [ {key:'age', label:'Age'}, {key:'player', label:'Player'}, {key:'event', label:'Event'}, {key:'finish', label:'Finish'}, {key:'photo', label:'Photo'} ], individual);
-
-        // Search + filters
-        document.getElementById('teamSearch').addEventListener('input', e => {
-          const q = e.target.value.toLowerCase();
-          const filtered = team.filter(item => (item.players + ' ' + item.event + ' ' + item.finish).toLowerCase().includes(q));
-          const age = document.getElementById('teamFilterAge').value;
-          renderTable(teamSection, [ {key:'age', label:'Age'}, {key:'players', label:'Players'}, {key:'event', label:'Event'}, {key:'finish', label:'Finish'}, {key:'photo', label:'Photo'} ], filtered.filter(i => !age || i.age === age));
-        });
-        document.getElementById('teamFilterAge').addEventListener('change', e => { document.getElementById('teamSearch').dispatchEvent(new Event('input')); });
-
-        document.getElementById('schoolSearch').addEventListener('input', e => {
-          const q = e.target.value.toLowerCase();
-          const filtered = school.filter(item => (item.player + ' ' + item.school).toLowerCase().includes(q));
-          const grade = document.getElementById('schoolFilterGrade').value;
-          renderTable(schoolSection, [ {key:'grade', label:'Grade'}, {key:'player', label:'Player'}, {key:'school', label:'School'} ], filtered.filter(i => !grade || i.grade === grade));
-        });
-        document.getElementById('schoolFilterGrade').addEventListener('change', e => { document.getElementById('schoolSearch').dispatchEvent(new Event('input')); });
-
-        document.getElementById('individualSearch').addEventListener('input', e => {
-          const q = e.target.value.toLowerCase();
-          const filtered = individual.filter(item => (item.player + ' ' + item.event + ' ' + item.finish).toLowerCase().includes(q));
-          const age = document.getElementById('individualFilterAge').value;
-          renderTable(individualSection, [ {key:'age', label:'Age'}, {key:'player', label:'Player'}, {key:'event', label:'Event'}, {key:'finish', label:'Finish'}, {key:'photo', label:'Photo'} ], filtered.filter(i => !age || i.age === age));
-        });
-        document.getElementById('individualFilterAge').addEventListener('change', e => { document.getElementById('individualSearch').dispatchEvent(new Event('input')); });
-
-      } catch (err) {
-        console.error(err);
-      }
+      tr.appendChild(td);
     });
-  </script>
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  card.appendChild(table);
+  container.innerHTML = '';
+  container.appendChild(card);
+}
+function showLightbox(src) {
+  let lb = document.getElementById('dynamic-lightbox');
+  if (!lb) {
+    lb = document.createElement('div');
+    lb.id = 'dynamic-lightbox';
+    lb.style = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);z-index:9999;';
+    const img = document.createElement('img');
+    img.id = 'dynamic-lightbox-img';
+    img.style = 'max-width:90%;max-height:90%;border-radius:10px;';
+    const close = document.createElement('button');
+    close.textContent = '✕';
+    close.style = 'position:absolute;top:20px;right:24px;font-size:24px;color:white;background:none;border:none;cursor:pointer;';
+    close.addEventListener('click', () => lb.remove());
+    lb.appendChild(img);
+    lb.appendChild(close);
+    lb.addEventListener('click', event => {
+      if (event.target === lb) lb.remove();
+    });
+    document.body.appendChild(lb);
+  }
+  document.getElementById('dynamic-lightbox-img').src = src;
+  lb.style.display = 'flex';
+}
+function filterData(items, query, fields, filterValue, filterField) {
+  const normalized = query.trim().toLowerCase();
+  return items.filter(item => {
+    const matchesQuery = normalized === '' || fields.some(field => String(item[field] || '').toLowerCase().includes(normalized));
+    const matchesFilter = !filterValue || String(item[filterField] || '') === filterValue;
+    return matchesQuery && matchesFilter;
+  });
+}
+window.addEventListener('load', async () => {
+  try {
+    const team = await fetchJSON('{{ "/assets/data/team_competitions.json" | relative_url }}');
+    const school = await fetchJSON('{{ "/assets/data/school_teams.json" | relative_url }}');
+    const individual = await fetchJSON('{{ "/assets/data/individual_tournaments.json" | relative_url }}');
 
+    document.getElementById('teamCount').textContent = team.length;
+    document.getElementById('schoolCount').textContent = school.length;
+    document.getElementById('individualCount').textContent = individual.length;
+
+    const teamSection = document.getElementById('teamSection');
+    const schoolSection = document.getElementById('schoolSection');
+    const individualSection = document.getElementById('individualSection');
+
+    const teamSearch = document.getElementById('teamSearch');
+    const teamFilterAge = document.getElementById('teamFilterAge');
+    const schoolSearch = document.getElementById('schoolSearch');
+    const schoolFilterGrade = document.getElementById('schoolFilterGrade');
+    const individualSearch = document.getElementById('individualSearch');
+    const individualFilterAge = document.getElementById('individualFilterAge');
+
+    const applyTeam = () => renderTable(teamSection, [
+      { key: 'age', label: 'Age' },
+      { key: 'players', label: 'Players' },
+      { key: 'event', label: 'Event' },
+      { key: 'finish', label: 'Finish' },
+      { key: 'photo', label: 'Photo' }
+    ], filterData(team, teamSearch.value, ['players', 'event', 'finish'], teamFilterAge.value, 'age'));
+
+    const applySchool = () => renderTable(schoolSection, [
+      { key: 'grade', label: 'Grade' },
+      { key: 'player', label: 'Player' },
+      { key: 'school', label: 'School' }
+    ], filterData(school, schoolSearch.value, ['player', 'school'], schoolFilterGrade.value, 'grade'));
+
+    const applyIndividual = () => renderTable(individualSection, [
+      { key: 'age', label: 'Age' },
+      { key: 'player', label: 'Player' },
+      { key: 'event', label: 'Event' },
+      { key: 'finish', label: 'Finish' },
+      { key: 'photo', label: 'Photo' }
+    ], filterData(individual, individualSearch.value, ['player', 'event', 'finish'], individualFilterAge.value, 'age'));
+
+    teamSearch.addEventListener('input', applyTeam);
+    teamFilterAge.addEventListener('change', applyTeam);
+    schoolSearch.addEventListener('input', applySchool);
+    schoolFilterGrade.addEventListener('change', applySchool);
+    individualSearch.addEventListener('input', applyIndividual);
+    individualFilterAge.addEventListener('change', applyIndividual);
+
+    applyTeam();
+    applySchool();
+    applyIndividual();
+  } catch (error) {
+    console.error(error);
+  }
+});
+</script>
