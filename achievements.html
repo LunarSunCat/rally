@@ -86,36 +86,40 @@ title: Achievements
   .section-summary button:hover {
     background: #276a86;
   }
-  details {
-    border: 1px solid #dbe8ee;
-    border-radius: 14px;
-    background: #fff;
-    overflow: hidden;
-    margin-bottom: 1rem;
-  }
-  summary {
-    cursor: pointer;
-    list-style: none;
-    padding: 1.15rem 1.25rem;
-    font-size: 1.1rem;
-    color: #0d4b5d;
-    background: #f8fbfd;
+  .tab-list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.5rem 0 1rem;
   }
-  summary::-webkit-details-marker {
+  .tab-button {
+    border: 1px solid #cbd9df;
+    background: #f8fbfd;
+    color: #06425a;
+    border-radius: 999px;
+    padding: 0.75rem 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+  }
+  .tab-button.active {
+    background: #0d4b5d;
+    color: #fff;
+    border-color: #0d4b5d;
+  }
+  .tab-panel {
     display: none;
+    animation: fadeIn 0.25s ease;
   }
-  .summary-arrow {
-    transition: transform 0.2s ease;
+  .tab-panel.active {
+    display: block;
   }
-  details[open] .summary-arrow {
-    transform: rotate(90deg);
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   .section-content {
-    padding: 1rem 1.25rem 1.25rem;
+    padding: 0;
   }
   .controls {
     display: flex;
@@ -232,11 +236,13 @@ title: Achievements
     </div>
   </div>
 
-  <details open>
-    <summary>
-      Team Competitions
-      <span class="summary-arrow">▶</span>
-    </summary>
+  <div class="tab-list" role="tablist">
+    <button class="tab-button active" data-target="teamPanel" role="tab" aria-selected="true">Team Competitions</button>
+    <button class="tab-button" data-target="schoolPanel" role="tab" aria-selected="false">School Teams</button>
+    <button class="tab-button" data-target="individualPanel" role="tab" aria-selected="false">Individual Tournaments</button>
+  </div>
+
+  <div id="teamPanel" class="tab-panel active">
     <div class="section-content">
       <p>Team competition results from our coaches’ recent USTA seasons.</p>
       <div class="controls">
@@ -251,13 +257,9 @@ title: Achievements
       </div>
       <div id="teamSection"></div>
     </div>
-  </details>
+  </div>
 
-  <details>
-    <summary>
-      School Teams
-      <span class="summary-arrow">▶</span>
-    </summary>
+  <div id="schoolPanel" class="tab-panel">
     <div class="section-content">
       <p>School tennis participation and achievements for coaches competing on varsity and JV teams.</p>
       <div class="controls">
@@ -274,13 +276,9 @@ title: Achievements
       </div>
       <div id="schoolSection"></div>
     </div>
-  </details>
+  </div>
 
-  <details>
-    <summary>
-      Individual Tournaments
-      <span class="summary-arrow">▶</span>
-    </summary>
+  <div id="individualPanel" class="tab-panel">
     <div class="section-content">
       <p>Individual USTA tournament results for our coaches across age divisions.</p>
       <div class="controls">
@@ -295,7 +293,7 @@ title: Achievements
       </div>
       <div id="individualSection"></div>
     </div>
-  </details>
+  </div>
 
   <div class="quick-links">
     <p><strong>Quick Links</strong></p>
@@ -387,6 +385,20 @@ function filterData(items, query, fields, filterValue, filterField) {
     return matchesQuery && matchesFilter;
   });
 }
+function initTabs() {
+  const buttons = document.querySelectorAll('.tab-button');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      buttons.forEach(btn => {
+        const target = btn.dataset.target;
+        const panel = document.getElementById(target);
+        btn.classList.toggle('active', btn === button);
+        btn.setAttribute('aria-selected', btn === button ? 'true' : 'false');
+        if (panel) panel.classList.toggle('active', btn === button);
+      });
+    });
+  });
+}
 window.addEventListener('load', async () => {
   try {
     const team = await fetchJSON('{{ "/assets/data/team_competitions.json" | relative_url }}');
@@ -440,6 +452,7 @@ window.addEventListener('load', async () => {
     applyTeam();
     applySchool();
     applyIndividual();
+    initTabs();
   } catch (error) {
     console.error(error);
   }
