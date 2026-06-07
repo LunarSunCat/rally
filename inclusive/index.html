@@ -1,0 +1,77 @@
+---
+layout: default
+title: Inclusive Program
+css: /assets/css/style.css
+---
+
+<style>
+  header { display: flex; align-items: center; justify-content: center; gap: 20px; background-color: #0077b6; color: white; padding: 20px; }
+  .header-photo { width: 100px; height: 100px; border-radius: 12px; object-fit: cover; object-position: center 20%; box-shadow: 0 6px 12px rgba(0,0,0,0.1); }
+  nav { padding: 10px; text-align: center; }
+  nav a { color: #0077b6; margin: 0 15px; text-decoration: none; font-weight: bold; }
+  nav a:hover { text-decoration: underline; }
+  .toggle-button { display: block; margin: 10px auto 20px auto; padding: 10px 20px; background-color: #0077b6; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease; }
+  .toggle-button:hover { background-color: #005f87; }
+  .hidden-table { display: none; }
+  footer { background-color: #0077b6; color: white; text-align: center; padding: 10px 0; margin-top: 20px; }
+</style>
+
+<!-- Banner -->
+<img src="http://rallyatl.com/inclusive/image/coachteam2026.png" alt="Banner" style="width:100%;height:auto;">
+<hr style="width:85%;margin:0 auto;border:1px solid darkgray;">
+
+<div class="intro-message">
+  <h2>Inclusive Program</h2>
+  <p>
+    RALLY believes racquet sports—especially tennis—should be welcoming, joyful, and accessible to every child. Through our Inclusive Program, we organize adapted sports activities for children with autism and other special needs, creating a supportive environment where they can build confidence, coordination, social connection, and a love for movement. Our coach team designs patient, encouraging, and flexible sessions tailored to each child’s comfort level and needs. Activities focus on fun, engagement, and participation, while also helping children develop motor skills, communication, and confidence on the court.
+  </p>
+  <p>
+    Through this program, RALLY has organized multiple inclusive sports events for children with special needs and their families, including several sessions in partnership with <a href="https://www.trueloveforspecialneedfamilies.com/" target="_blank">True Love for Special Need Families</a>. These events create welcoming spaces where every child can play, connect, and grow with confidence. Through tennis and other fun games such as pickleball, basketball, and volleyball, our youth volunteers help build an atmosphere of encouragement, friendship, and belonging. As part of RALLY’s broader mission, our community initiatives also support charitable causes, including fundraising efforts benefiting <a href="https://www.stjude.org/" target="_blank">St. Jude Children’s Research Hospital</a>, <a href="https://www.choa.org/" target="_blank">Children's Healthcare of Atlanta</a>, <a href="https://spectrumautism.org/" target="_blank">Spectrum</a>, etc.
+  </p>
+</div>
+
+<div class="intro-container" style="padding:0;">
+  <section id="photos" class="card" style="width:100%; margin:0 auto; box-sizing:border-box;">
+    <button class="toggle-button" onclick="toggleTable()">Show Group Lesson Records</button>
+    <div id="studentTable" class="hidden-table" style="width:100%;">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th># Kids</th>
+            <th>Coaches</th>
+            <th>Fun Memory</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2-16&17-2026</td>
+            <td>7</td>
+            <td>Aiden, Andy, Angela, Aria, Austen, Charlie, Claire, Emma, Eric, Evan, Hana, Hannah, Hanson, Jayden, Joy Ye, Molly, Patrick, Roger</td>
+            <td><a href="http://rallyatl.com/image/Group/20260216L.mp4" target="_blank">Video1</a>, <a href="http://rallyatl.com/image/Group/20260217L.mp4" target="_blank">Video2</a></td>
+          </tr>
+          <tr>
+            <td>1-19-2026</td>
+            <td>6</td>
+            <td>Aiden, Andy, Angela, Aria, Charlie, Emma, Eric, Evan, Florence, Hana, Hannah, Jayden, Lucy, Molly, Patrick, Roger, Ryan</td>
+            <td><a href="http://rallyatl.com/image/Group/20260119.mp4" target="_blank">Video</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>
+  function toggleTable() {
+    const tableDiv = document.getElementById('studentTable');
+    const button = document.querySelector('.toggle-button');
+    if (tableDiv.classList.contains('hidden-table')) {
+      tableDiv.classList.remove('hidden-table');
+      button.textContent = 'Hide Group Lesson Records';
+    } else {
+      tableDiv.classList.add('hidden-table');
+      button.textContent = 'Show Group Lesson Records';
+    }
+  }
+</script>
