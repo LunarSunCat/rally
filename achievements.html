@@ -1,9 +1,4 @@
 
----
-layout: default
-title: Achievements
----
-
 <style>
   body {
     background: #e9f4f9;
@@ -28,7 +23,7 @@ title: Achievements
   }
   .page-header h1 {
     margin: 0;
-    font-size: clamp(2.3rem, 3vw, 3.5rem); /* Increased heading size */
+    font-size: clamp(2rem, 2.5vw, 3rem);
     color: #0d4b5d;
   }
   .page-intro {
@@ -36,7 +31,7 @@ title: Achievements
     min-width: 280px;
     line-height: 1.7;
     color: #3c5058;
-    font-size: 1.15rem; /* Increased font size */
+    font-size: 1.05rem;
   }
   .summary-grid {
     display: grid;
@@ -53,12 +48,12 @@ title: Achievements
   }
   .summary-card h3 {
     margin: 0 0 0.6rem;
-    font-size: 1.25rem; /* Increased font size */
+    font-size: 1.15rem;
     color: #0d4b5d;
   }
   .summary-card p {
     margin: 0;
-    font-size: 1.15rem; /* Increased font size */
+    font-size: 1.1rem;
     color: #4b6570;
     line-height: 1.6;
   }
@@ -75,18 +70,17 @@ title: Achievements
   }
   .section-summary .section-title {
     margin: 0;
-    font-size: 1.4rem; /* Increased font size */
+    font-size: 1.3rem;
     color: #06425a;
     font-weight: 700;
   }
   .section-summary button {
-    padding: 0.75rem 1.25rem; /* Made button slightly larger */
+    padding: 0.65rem 1rem;
     border-radius: 999px;
     border: 1px solid #0d4b5d;
     background: #0d4b5d;
     color: #fff;
     cursor: pointer;
-    font-size: 1.1rem; /* Increased text size */
     transition: background 0.2s ease;
   }
   .section-summary button:hover {
@@ -95,19 +89,19 @@ title: Achievements
   .tab-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.8rem;
-    margin: 4rem 0 2rem; /* Kept large spacing between top info and tabs */
+    gap: 0.6rem;
+    margin: 4rem 0 1.75rem; /* Increased top margin from 2.5rem to 4rem */
   }
   .tab-button {
     border: 1px solid #cbd9df;
     background: #f8fbfd;
     color: #06425a;
     border-radius: 999px;
-    padding: 1.2rem 2rem; /* Made tab buttons physically larger */
+    padding: 1rem 1.5rem;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-weight: 700; /* Bolder look */
-    font-size: 1.25rem; /* Noticeably increased text size */
+    font-weight: 600;
+    font-size: 1.1rem;
   }
   .tab-button.active {
     background: #0d4b5d;
@@ -132,19 +126,19 @@ title: Achievements
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     align-items: center;
   }
   .search-input,
   .filter-select {
     min-width: 180px;
     flex: 1 1 220px;
-    padding: 0.95rem 1.2rem; /* Slightly larger inputs */
+    padding: 0.85rem 1.1rem;
     border-radius: 10px;
     border: 1px solid #cbd9df;
     background: #f8fcff;
     color: #084754;
-    font-size: 1.15rem; /* Increased control text size */
+    font-size: 1rem;
   }
   table.card-table {
     width: 100%;
@@ -153,17 +147,17 @@ title: Achievements
   }
   table.card-table th,
   table.card-table td {
-    padding: 1.1rem 1.25rem; /* Extra padding for spacious look */
+    padding: 1rem 1.1rem;
     border-bottom: 1px solid #eef4f7;
     text-align: left;
-    font-size: 1.15rem; /* Increased general table text size */
+    font-size: 1.05rem;
   }
   table.card-table th {
-    background: #103541; /* Shifted to a much darker profile */
+    background: #1e6b7f;
     color: #ffffff;
     font-weight: 700;
-    letter-spacing: 0.03em;
-    font-size: 1.2rem; /* Made headers distinct and bold */
+    letter-spacing: 0.02em;
+    font-size: 1.1rem;
   }
   table.card-table tbody tr {
     background: #ffffff;
@@ -188,18 +182,17 @@ title: Achievements
     white-space: nowrap;
   }
   table.card-table td img {
-    max-width: 130px; /* Slightly scaled up image max */
+    max-width: 120px;
     border-radius: 10px;
     display: block;
     cursor: pointer;
   }
   .quick-links {
-    margin-top: 2rem;
-    padding: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 1.25rem;
     background: #fcfdfe;
     border: 1px solid #d8e5ec;
     border-radius: 14px;
-    font-size: 1.1rem; /* Increased footer size */
   }
   .quick-links a {
     color: #0d4b5d;
@@ -219,7 +212,7 @@ title: Achievements
     background: linear-gradient(135deg, rgba(20, 118, 156, 0.14), rgba(255, 255, 255, 0.96));
     border: 1px solid rgba(20, 118, 156, 0.25);
     border-radius: 24px;
-    padding: 1.1rem 1.25rem;
+    padding: 1rem 1.15rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -227,40 +220,40 @@ title: Achievements
     color: #0b4d6a;
     font-weight: 700;
     box-shadow: 0 12px 28px rgba(6, 64, 90, 0.08);
-    font-size: 1.2rem; /* Expanded counter data sizes */
+    font-size: 1.1rem;
   }
   .stats-pill span:first-child {
     opacity: 0.85;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .intro-box {
     background: linear-gradient(180deg, #ecf9fe 0%, #ffffff 100%);
     border: 1px solid #a4d9ef;
     border-radius: 16px;
-    padding: 1.5rem 1.6rem;
-    margin-top: 1.25rem;
+    padding: 1.25rem 1.35rem;
+    margin-top: 1rem;
     box-shadow: 0 14px 34px rgba(12, 50, 70, 0.1);
     color: #164a5e;
-    line-height: 1.8;
-    font-size: 1.15rem; /* Increased intro structural text font size */
+    line-height: 1.75;
+    font-size: 1.05rem;
   }
   .intro-box p {
-    margin: 0 0 1rem;
-    font-size: 1.15rem;
+    margin: 0 0 0.9rem;
+    font-size: 1.05rem;
   }
   .intro-box p:last-child {
     margin-bottom: 0;
   }
   .panel-note {
     margin: 1.5rem 0 1.75rem;
-    padding: 1.25rem 1.4rem;
+    padding: 1.15rem 1.2rem;
     border-radius: 16px;
     background: linear-gradient(180deg, #ecf7fb 0%, #ffffff 100%);
     border: 1px solid #8bc8e6;
     color: #0c4a65;
     box-shadow: 0 10px 24px rgba(12, 50, 70, 0.08);
-    font-size: 1.15rem; /* Increased descriptions above tables */
-    line-height: 1.7;
+    font-size: 1.05rem;
+    line-height: 1.6;
   }
   .panel-note strong {
     color: #0d4b5d;
@@ -536,3 +529,5 @@ window.addEventListener('load', async () => {
   }
 });
 </script>
+
+```
