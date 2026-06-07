@@ -4,6 +4,9 @@ title: Achievements
 ---
 
 <style>
+  body {
+    background: #e9f4f9;
+  }
   .achievements-page {
     max-width: 1100px;
     margin: 0 auto;
@@ -199,24 +202,29 @@ title: Achievements
     text-decoration: underline;
   }
   .stats-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) minmax(240px, 1fr) minmax(240px, 1fr);
     gap: 1rem;
-    justify-content: space-between;
-    align-items: stretch;
-    flex-wrap: wrap;
+    align-items: center;
   }
   .stats-pill {
     background: linear-gradient(135deg, rgba(14, 90, 132, 0.08), rgba(255, 255, 255, 0.95));
     border: 1px solid rgba(14, 90, 132, 0.15);
     border-radius: 24px;
     padding: 0.95rem 1.1rem;
-    flex: 1 1 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #0d4b5d;
     font-weight: 700;
     box-shadow: 0 8px 20px rgba(6, 64, 90, 0.06);
+    justify-self: stretch;
+  }
+  .stats-pill:nth-child(2) {
+    justify-self: center;
+  }
+  .stats-pill:nth-child(3) {
+    justify-self: end;
   }
   .stats-pill span:first-child {
     opacity: 0.8;
@@ -256,6 +264,12 @@ title: Achievements
     }
     .controls {
       flex-direction: column;
+    }
+    .stats-row {
+      grid-template-columns: 1fr;
+    }
+    .stats-pill {
+      justify-self: stretch;
     }
   }
 </style>
