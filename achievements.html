@@ -140,11 +140,12 @@ title: Achievements
   }
   table.card-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0 0.2rem;
   }
   table.card-table th,
   table.card-table td {
-    padding: 0.85rem 1rem;
+    padding: 0.9rem 1rem;
     border-bottom: 1px solid #eef4f7;
     text-align: left;
   }
@@ -152,13 +153,33 @@ title: Achievements
     background: #eef8fc;
     color: #084754;
     font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  table.card-table tbody tr {
+    background: #ffffff;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  table.card-table tbody tr:nth-child(odd) {
+    background: #f8fbfe;
   }
   table.card-table tbody tr:hover {
-    background: #f7fbfd;
+    background: #e7f4f9;
+    transform: translateY(-1px);
+  }
+  table.card-table tbody td:nth-child(2) {
+    font-weight: 600;
+    color: #0d4b5d;
+  }
+  table.card-table tbody td {
+    position: relative;
+  }
+  table.card-table tbody td:first-child {
+    width: 1px;
+    white-space: nowrap;
   }
   table.card-table td img {
     max-width: 120px;
-    border-radius: 8px;
+    border-radius: 10px;
     display: block;
     cursor: pointer;
   }
