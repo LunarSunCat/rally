@@ -1,0 +1,58 @@
+[
+  {
+    "age": "18U",
+    "players": "Angela, Charlie, Claire, David, Emma, Eric, Evan, Hana, Joy, Kathy, Oliver, Patrick",
+    "event": "USTA Beginner, 2026",
+    "finish": "Division Champion",
+    "photo": "/images/Tmq18b.png"
+  },
+  {
+    "age": "14U",
+    "players": "Angela, Charlie, David, Eric, Joy, Kathy, Lucy, Oliver, Patrick, Wyatt",
+    "event": "USTA Intermediate, 2026",
+    "finish": "Division Finalist",
+    "photo": "/images/Tmq14I.png"
+  },
+  {
+    "age": "14U",
+    "players": "Angela, Claire, Eric, Kathy, Lucy, Patrick",
+    "event": "USTA Beginner, 2025",
+    "finish": "State Finalist",
+    "photo": "/images/Tmq14B.jpg"
+  },
+  {
+    "age": "12U",
+    "players": "Aaron, Andy, Austen, Emma, Florence, Kate, Rachael, Ryan",
+    "event": "USTA Advanced, 2026",
+    "finish": "Division Champion",
+    "photo": "/images/Tmq12a2026.png"
+  },
+  {
+    "age": "12U",
+    "players": "Aria, Angela, David, Florence, Lucy, Oliver, Wyatt",
+    "event": "USTA Advanced, 2025",
+    "finish": "Division Champion",
+    "photo": "/images/Tflora12A.jpg"
+  },
+  {
+    "age": "12U",
+    "players": "Andy, Austen, Emma, Florence, Ryan",
+    "event": "USTA Advanced, 2026",
+    "finish": "Division Finalist",
+    "photo": "/images/Tmq12A.jpg"
+  },
+  {
+    "age": "12U",
+    "players": "Zoe, Kenneth",
+    "event": "USTA Advanced, 2025",
+    "finish": "State Champion",
+    "photo": "/images/Tli12A.jpg"
+  },
+  {
+    "age": "12U",
+    "players": "Andy, Emma",
+    "event": "USTA Beginner, 2025",
+    "finish": "Division Champion",
+    "photo": "/images/Tmq12B.jpg"
+  }
+]
